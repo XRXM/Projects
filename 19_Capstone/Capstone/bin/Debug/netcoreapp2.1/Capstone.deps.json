@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "Capstone/1.0.0": {
+        "dependencies": {
+          "ConsoleMenuFramework": "1.3.3"
+        },
+        "runtime": {
+          "Capstone.dll": {}
+        }
+      },
+      "ConsoleMenuFramework/1.3.3": {
+        "runtime": {
+          "lib/netcoreapp2.1/MenuFramework.dll": {
+            "assemblyVersion": "1.3.3.0",
+            "fileVersion": "1.3.3.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Capstone/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ConsoleMenuFramework/1.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-s0ioSKt/QZCjpg+qfT2s9SA98FhODAtLs7jBpINORLkojQEkOm2yLponaH8mtvwtBSNIUeQt4X0RCTyAp97tIw==",
+      "path": "consolemenuframework/1.3.3",
+      "hashPath": "consolemenuframework.1.3.3.nupkg.sha512"
+    }
+  }
+}
