@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Capstone.Class
 {
-    class VendingMachine
+    public class VendingMachine
     {
+        internal static string[] location;
         private SortedDictionary<string, List<Product>> inventory;
 
         public VendingMachine(IEnumerable<Product> productlist)
