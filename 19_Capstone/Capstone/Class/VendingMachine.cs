@@ -1,52 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Capstone.Class
 {
     public class VendingMachine
     {
+        public decimal Balance { get; set; } = 0;
+
+        public VendingMachine(decimal balance)
+        {
+            Balance = balance;
+        }
+
         internal static string[] location;
-        private SortedDictionary<string, List<Product>> inventory;
+        private SortedDictionary<string, Product> inventory;
 
         public VendingMachine(IEnumerable<Product> productlist)
         {
-            inventory = new SortedDictionary<string, List<Product>>();
+            this.inventory = new SortedDictionary<string, Product>();
 
             foreach (Product product in productlist)
             {
-                if (!inventory.ContainsKey(product.Location))
-                {
-                    inventory[product.Location] = new List<Product>();
-                }
-                List<Product> list = inventory[product.Location];
-                list.Add(product);
+
+
+                inventory[product.Location] = product;
+
+
 
 
             }
+
         }
-        public string[] Locations
+        public IEnumerable<Product> GetProducts()
         {
-            get
-            {
-                List<string> locations = new List<string>();
-
-                foreach (string location in inventory.Keys)
-                {
-                
-                    locations.Add(location);
-                }
-                return locations.ToArray();
-            }
+            return inventory.Values.ToArray();
         }
-        public Product[] GetProductsForLocation(string location)
+
+        public void FeedMoney(int money)
         {
-            if (inventory.ContainsKey(location))
-            {
-                return inventory[location].ToArray();
-            }
-            return new List<Product>().ToArray();
+            Balance += (decimal)money;
         }
 
+
+        public void SelectProduct(string letter, int number)
+        {
+            string checker;
+            checker = letter + number.ToString();
+            //foreach (KeyValuePair kvp in inventory)
+            //{
+            //    if (inventory.ContainsKey(checker))
+            //    {
+                    
+
+
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Selection does not Exsist: Try Again.");
+            //    }
+            //}
+
+
+
+
+        }
     }
 }

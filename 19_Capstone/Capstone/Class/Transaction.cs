@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Text;
 
-namespace Capstone.Class
-{
-    class Transaction
-    {
+//namespace Capstone.Class
+//{
+//    class Transaction
+//    {
      
       
-        private Dictionary<VendingMachine, Product> itemsDictionary = new Dictionary<VendingMachine, Product>();
+//        private Dictionary<VendingMachine, Product> itemsDictionary = new Dictionary<VendingMachine, Product>();
     
     
-    }
-}
+//    }
+//}

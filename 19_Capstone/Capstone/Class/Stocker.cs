@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
 using System.Text;
 
@@ -14,6 +15,7 @@ namespace Capstone.Class
             int stock = 5;
             try
             {
+                
                 List<Product> products = new List<Product>();
                 
                 using (StreamReader rdr = new StreamReader(filePath))
@@ -29,16 +31,17 @@ namespace Capstone.Class
                         Product prod = new Product(location, productName, price, productType, stock);
                        
                         products.Add(prod);
+                       
                     }
                 }
-               
+
                 return products;
             }
-            catch
+            catch (IOException e)
             {
-                return new List<Product>();
+                Console.WriteLine($"File path not found {e}");
             }
-
+            return null;
         }
     }
 }

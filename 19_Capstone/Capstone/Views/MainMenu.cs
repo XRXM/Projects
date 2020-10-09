@@ -8,31 +8,46 @@ namespace Capstone.Views
 {
     public class MainMenu : ConsoleMenu
     {
-        private VendingMachine VendingMachine;
-            
+        private VendingMachine vendingMachine;
+
         public MainMenu(VendingMachine vendingMachine)
         {
-            VendingMachine = vendingMachine;
+            this.vendingMachine = vendingMachine;
 
             AddOption("Display Vending Machine Items", DisplayVend);
             AddOption("Purchase", Purchase);
             AddOption("Exit", Exit);
-        
+
+            Configure(cfg =>
+            {
+                cfg.Title = "*** Main Menu ***";
+                cfg.ItemForegroundColor = ConsoleColor.DarkGray;
+                cfg.SelectedItemForegroundColor = ConsoleColor.Green;
+                cfg.Selector = "==>";
+            });
+
         }
 
         private MenuOptionResult DisplayVend()
         {
-            // Show the categories menu
-            DisPlayVendMenu dvend = new DisPlayVendMenu(VendingMachine);
-            dvend.Show();
-            return MenuOptionResult.DoNotWaitAfterMenuSelection;
+           foreach (Product product in vendingMachine.GetProducts())
+            {
+                Console.WriteLine($"{product.Location} {product.ProductName} {product.Price} ");
+            }
+
+            return MenuOptionResult.WaitAfterMenuSelection;
+            
+            
+           
         }
+
+
         private MenuOptionResult Purchase()
         {
             // Show the categories menu
-           PurchaseMenu purch = new PurchaseMenu();
+            PurchaseMenu purch = new PurchaseMenu(vendingMachine);
             purch.Show();
-          
+
             return MenuOptionResult.DoNotWaitAfterMenuSelection;
         }
     }
