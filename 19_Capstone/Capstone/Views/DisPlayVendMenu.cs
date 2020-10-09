@@ -22,16 +22,16 @@ namespace Capstone.Views
                 cfg.Title = "Display Items";
             });
         }
-        protected override void RebuildMenuOptions()
-        {
-            ClearOptions();
-            string[] location = vendingMachine.Locations;
-            foreach (string locations in vendingMachine.Locations)
-            {
-                AddOption<string>, (locations, );
-            }
-            AddOption("Back to Main", Exit);
-        }
+        //protected override void RebuildMenuOptions()
+        //{
+        //    ClearOptions();
+        //    string[] location = vendingMachine.Locations;
+        //    foreach (string locations in vendingMachine.Locations)
+        //    {
+        //        AddOption<string>, (locations, );
+        //    }
+        //    AddOption("Back to Main", Exit);
+        //}
         //private MenuOptionResult ShowProductsForCategory(string locations)
         //{
         //    // Launch the products menu

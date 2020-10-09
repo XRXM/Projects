@@ -17,7 +17,7 @@ namespace Capstone
             MainMenu mainMenu = new MainMenu(vendingMachine);
             mainMenu.Show();
 
-            Console.WriteLine("Eat a big fat dick");
+            Console.WriteLine("Have a nice day!");
             Console.ReadKey();
           
         }
