@@ -50,12 +50,15 @@ namespace Capstone.Class
 
             //string checker;
             //checker = letter + number.ToString();
+            
             foreach (string kvp in inventory.Keys)
             {
                 Product myProd = inventory[kvp];
+
                 if (Balance < myProd.Price)
                 {
                     Console.WriteLine("Insufficient Funds");
+                    break;
                 }
                 else if (kvp == checker && myProd.Stock > 0)
                 {
@@ -63,18 +66,21 @@ namespace Capstone.Class
                     Balance -= myProd.Price;
                     myProd.Stock -= 1;
                     MakeSound(myProd.ProductType);
+                    break;
                 }
                 else if (kvp == checker && myProd.Stock == 0)
                 {
-                    Console.WriteLine("Out of stock",10);
+                    Console.WriteLine("Out of stock", 10);
+                    break;
                 }
-                else if(kvp != checker)
+                else if (kvp != checker)
                 {
-                    Console.WriteLine("Selection does not Exsist: Try Again.",10);
+                    Console.WriteLine("Selection does not Exsist: Try Again.", 10);
+                    break;
                 }
             }
 
-            void  MakeSound(string type)
+            void MakeSound(string type)
             {
                 if (type == "Chip")
                 {
@@ -101,7 +107,7 @@ namespace Capstone.Class
             //    const decimal dimes = 10;
             //    const decimal nickles = 1;
             //    change *= 100;
-                
+
 
             //}
 
