@@ -17,30 +17,27 @@ namespace Capstone.Views
 
         public PurchaseMenu(VendingMachine vendingMachine)
         {
-            
+
 
             this.vendingMachine = vendingMachine;
-            
+
             AddOption("Feed Money", FeedMoney);
             AddOption("Select Product", SelectProduct);
-            //AddOption("Finish Transaction", FinishTransaction);
+            AddOption("Finish Transaction", FinishTransaction);
             AddOption("Back To Purchase Menu", Exit);
-           
+
 
 
         }
         protected override void OnBeforeShow()
         {
-            Console.WriteLine($"Current Balance {vendingMachine.Balance :C}");
+            Console.WriteLine($"Current Balance {vendingMachine.Balance:C}");
         }
         private MenuOptionResult FeedMoney()
         {
-         
-           
-           
-
-            int money = GetInteger("Enter a Whole Dollar Amount");
+            decimal money = GetDecimal("Enter a Whole Dollar Amount");
             vendingMachine.FeedMoney(money);
+            vendingMachine.Log("FEED", "MONEY", (money));
             //vending machine
             return MenuOptionResult.DoNotWaitAfterMenuSelection;
         }
@@ -48,15 +45,24 @@ namespace Capstone.Views
         {
             foreach (Product product in vendingMachine.GetProducts())
             {
-                Console.WriteLine($"{product.Location,-15} {product.ProductName,10} {product.Price,20:C} ");
+                Console.WriteLine($"{product.Location,-15} {product.ProductName,10} {product.Price,20:C}{product.Stock,4} ");
             }
+
             Console.WriteLine($"{new string('_', 56)}");
-            string select = GetString("Make selection by choosing location :Letter,number",true,null);
+            string select = GetString("Make selection by choosing location :Letter,number", true, null);
             vendingMachine.SelectProduct(select.ToUpper());
-            
+
             return MenuOptionResult.WaitAfterMenuSelection;
         }
+        private MenuOptionResult FinishTransaction()
+        {
+            Console.WriteLine(vendingMachine.Makechange(vendingMachine.Balance));
+            vendingMachine.Log("GIVE", "CHANGE", (vendingMachine.Balance));
+            vendingMachine.Balance = 0;
 
-        
+            //Console.ReadLine();
+            return MenuOptionResult.WaitThenCloseAfterSelection;
+        }
+
     }
 }

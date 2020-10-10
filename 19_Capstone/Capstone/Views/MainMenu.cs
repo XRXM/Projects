@@ -14,7 +14,7 @@ namespace Capstone.Views
         {
             this.vendingMachine = vendingMachine;
 
-            AddOption("Display Vending Machine Items", DisplayVend);
+            AddOption("Display Vending Machine Items", DisplayVend );
             AddOption("Purchase", Purchase);
             AddOption("Exit", Exit);
 
@@ -32,7 +32,7 @@ namespace Capstone.Views
         {
             foreach (Product product in vendingMachine.GetProducts())
             {
-                Console.WriteLine($"{product.Location,-20} {product.ProductName,8} {product.Price,15} ");
+                Console.WriteLine($"{product.Location,-20}{product.ProductName,8}{product.Price,10 :C}{product.Stock,15} ");
             }
 
             return MenuOptionResult.WaitAfterMenuSelection;
@@ -40,7 +40,6 @@ namespace Capstone.Views
 
 
         }
-
 
         private MenuOptionResult Purchase()
         {
@@ -53,5 +52,6 @@ namespace Capstone.Views
 
             return MenuOptionResult.DoNotWaitAfterMenuSelection;
         }
+        
     }
 }

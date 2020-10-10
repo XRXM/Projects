@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -39,9 +40,9 @@ namespace Capstone.Class
             return inventory.Values.ToArray();
         }
 
-        public void FeedMoney(int money)
+        public void FeedMoney(decimal money)
         {
-            Balance += (decimal)money;
+            Balance += money;
         }
 
 
@@ -50,12 +51,18 @@ namespace Capstone.Class
 
             //string checker;
             //checker = letter + number.ToString();
-            
+
             foreach (string kvp in inventory.Keys)
             {
                 Product myProd = inventory[kvp];
 
-                if (Balance < myProd.Price)
+                if (!inventory.ContainsKey(checker))
+                {
+
+                    Console.WriteLine("selection does not exsist: try again.", 10);
+                    break;
+                }
+                else if (Balance < myProd.Price)
                 {
                     Console.WriteLine("Insufficient Funds");
                     break;
@@ -66,6 +73,7 @@ namespace Capstone.Class
                     Balance -= myProd.Price;
                     myProd.Stock -= 1;
                     MakeSound(myProd.ProductType);
+                    Log(myProd.ProductName, kvp, myProd.Price);
                     break;
                 }
                 else if (kvp == checker && myProd.Stock == 0)
@@ -73,11 +81,9 @@ namespace Capstone.Class
                     Console.WriteLine("Out of stock", 10);
                     break;
                 }
-                else if (kvp != checker)
-                {
-                    Console.WriteLine("Selection does not Exsist: Try Again.", 10);
-                    break;
-                }
+                 
+
+                
             }
 
             void MakeSound(string type)
@@ -99,19 +105,48 @@ namespace Capstone.Class
                     Console.WriteLine("Chew Chew, Yum!");
                 }
             }
+        }
 
 
-            //public void MakeChange(decimal change)
-            //{
-            //    const decimal quarters = 25;
-            //    const decimal dimes = 10;
-            //    const decimal nickles = 1;
-            //    change *= 100;
+        public string Makechange(decimal change)
+        {            
+            const int quarter = 25;
+            const int dime = 10;
+            const int nickle = 5;
 
+            change *= 100;
+            int intChange = (int)change;
+            //Decimal.ToInt32((int)change);
+            int quarters = intChange / quarter;
+            int dimes = (intChange % quarter) / dime;
+            int nickles = ((intChange % quarter) % dime) / nickle;
 
-            //}
-
+           return $"Your change is {quarters} quarters, {dimes} dimes, and {nickles} nickles.";
 
         }
+
+        // put the strings by par of menue  make the decimal (balance - balance feedmoney) and  (balance + price for purchase)
+        public void Log(string a, string b, decimal num)
+        {
+            string path = @"..\..\..\..\Log.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                if (a == "FEED")
+                {
+                    writer.WriteLine($"{DateTime.Now} {a} {b} {Balance - num:C} {Balance:C}");
+                }
+                else if (a == "GIVE")
+                {
+                    writer.WriteLine($"{DateTime.Now} {a} {b} {num:C} {0:C}");
+                }
+                else 
+                {
+                    writer.WriteLine($"{DateTime.Now} {a} {b} {Balance + num:C} {Balance:C}");
+                }
+            }
+        }
+
+
+
     }
 }
