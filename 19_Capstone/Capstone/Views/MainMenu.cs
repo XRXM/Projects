@@ -21,7 +21,7 @@ namespace Capstone.Views
             Configure(cfg =>
             {
                 cfg.Title = "*** Main Menu ***";
-                cfg.ItemForegroundColor = ConsoleColor.DarkGray;
+                cfg.ItemForegroundColor = ConsoleColor.Gray;
                 cfg.SelectedItemForegroundColor = ConsoleColor.Green;
                 cfg.Selector = "==>";
             });
@@ -30,20 +30,23 @@ namespace Capstone.Views
 
         private MenuOptionResult DisplayVend()
         {
-           foreach (Product product in vendingMachine.GetProducts())
+            foreach (Product product in vendingMachine.GetProducts())
             {
-                Console.WriteLine($"{product.Location} {product.ProductName} {product.Price} ");
+                Console.WriteLine($"{product.Location,-20} {product.ProductName,8} {product.Price,15} ");
             }
 
             return MenuOptionResult.WaitAfterMenuSelection;
-            
-            
-           
+
+
+
         }
 
 
         private MenuOptionResult Purchase()
         {
+
+
+
             // Show the categories menu
             PurchaseMenu purch = new PurchaseMenu(vendingMachine);
             purch.Show();

@@ -23,7 +23,7 @@ namespace Capstone.Views
             
             AddOption("Feed Money", FeedMoney);
             AddOption("Select Product", SelectProduct);
-            AddOption("Finish Transaction", FinishTransaction);
+            //AddOption("Finish Transaction", FinishTransaction);
             AddOption("Back To Purchase Menu", Exit);
            
 
@@ -46,9 +46,15 @@ namespace Capstone.Views
         }
         private MenuOptionResult SelectProduct()
         {
-            vending
-            int select = GetString("Make selection by choosing location :Letter,number" letter , number);
-            return MenuOptionResult.DoNotWaitAfterMenuSelection;
+            foreach (Product product in vendingMachine.GetProducts())
+            {
+                Console.WriteLine($"{product.Location,-15} {product.ProductName,10} {product.Price,20:C} ");
+            }
+            Console.WriteLine($"{new string('_', 56)}");
+            string select = GetString("Make selection by choosing location :Letter,number",true,null);
+            vendingMachine.SelectProduct(select.ToUpper());
+            
+            return MenuOptionResult.WaitAfterMenuSelection;
         }
 
         

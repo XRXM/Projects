@@ -45,25 +45,65 @@ namespace Capstone.Class
         }
 
 
-        public void SelectProduct(string letter, int number)
+        public void SelectProduct(string checker)
         {
-            string checker;
-            checker = letter + number.ToString();
-            //foreach (KeyValuePair kvp in inventory)
+
+            //string checker;
+            //checker = letter + number.ToString();
+            foreach (string kvp in inventory.Keys)
+            {
+                Product myProd = inventory[kvp];
+                if (Balance < myProd.Price)
+                {
+                    Console.WriteLine("Insufficient Funds");
+                }
+                else if (kvp == checker && myProd.Stock > 0)
+                {
+                    //assign the product to a vailable from the inventory[key]              
+                    Balance -= myProd.Price;
+                    myProd.Stock -= 1;
+                    MakeSound(myProd.ProductType);
+                }
+                else if (kvp == checker && myProd.Stock == 0)
+                {
+                    Console.WriteLine("Out of stock",10);
+                }
+                else if(kvp != checker)
+                {
+                    Console.WriteLine("Selection does not Exsist: Try Again.",10);
+                }
+            }
+
+            void  MakeSound(string type)
+            {
+                if (type == "Chip")
+                {
+                    Console.WriteLine("Crunch Crunch, Yum!");
+                }
+                else if (type == "Candy")
+                {
+                    Console.WriteLine("Munch Munch, Yum!");
+                }
+                else if (type == "Drink")
+                {
+                    Console.WriteLine("Glug Glug, Yum!");
+                }
+                else
+                {
+                    Console.WriteLine("Chew Chew, Yum!");
+                }
+            }
+
+
+            //public void MakeChange(decimal change)
             //{
-            //    if (inventory.ContainsKey(checker))
-            //    {
-                    
+            //    const decimal quarters = 25;
+            //    const decimal dimes = 10;
+            //    const decimal nickles = 1;
+            //    change *= 100;
+                
 
-
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Selection does not Exsist: Try Again.");
-            //    }
             //}
-
-
 
 
         }

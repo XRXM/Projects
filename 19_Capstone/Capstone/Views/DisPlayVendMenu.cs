@@ -12,6 +12,7 @@ namespace Capstone.Views
 
 
 
+
         public DisPlayVendMenu(VendingMachine vendingMachine)
         {
             this.vendingMachine = vendingMachine;
