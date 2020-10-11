@@ -17,7 +17,7 @@ namespace Capstone
             MainMenu mainMenu = new MainMenu(vendingMachine);
             mainMenu.Show();
 
-            Console.WriteLine("Have a nice day!");
+            Console.WriteLine("\n\n\t\t\t\t\t\tHave a nice day!");
             Console.ReadKey();
           
         }

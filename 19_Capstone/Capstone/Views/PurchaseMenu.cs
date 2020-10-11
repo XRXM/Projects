@@ -21,21 +21,27 @@ namespace Capstone.Views
 
             this.vendingMachine = vendingMachine;
 
-            AddOption("Feed Money", FeedMoney);
-            AddOption("Select Product", SelectProduct);
-            AddOption("Finish Transaction", FinishTransaction);
-            AddOption("Back To Purchase Menu", Exit);
-
+            AddOption("\t(1) Feed Money", FeedMoney);
+            AddOption("\t(2) Select Product", SelectProduct);
+            AddOption("\t(3) Finish Transaction", FinishTransaction);
+            AddOption("\t(4) Back To Purchase Menu", Exit);
+            Configure(cfg =>
+            {
+                cfg.ItemForegroundColor = ConsoleColor.Cyan;
+                cfg.SelectedItemForegroundColor = ConsoleColor.White;
+                cfg.Selector = " ~~>";
+            });
 
 
         }
         protected override void OnBeforeShow()
         {
-            Console.WriteLine($"Current Balance {vendingMachine.Balance:C}");
+            Console.WriteLine();
+            Console.WriteLine($" \t******Current Balance {vendingMachine.Balance:C}******");
         }
         private MenuOptionResult FeedMoney()
         {
-            decimal money = GetDecimal("Enter a Whole Dollar Amount");
+            int money = GetInteger("\n\n Enter a Whole Dollar Amount");
             vendingMachine.FeedMoney(money);
             vendingMachine.Log("FEED", "MONEY", (money));
             //vending machine
@@ -43,14 +49,26 @@ namespace Capstone.Views
         }
         private MenuOptionResult SelectProduct()
         {
+            string[] headings = { " Location", "Product Name", "Amount", "Stock" };
+
+            //Console.WriteLine();
+            //Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine($" {headings[0],-20} {headings[1],20} {headings[2],20} {headings[3],20}");
+            Console.WriteLine($"{new string('_', 20)} {new string('_', 20)} {new string('_', 20)} {new string('_', 20)} ");
+            Console.WriteLine($"\t\t\t\tCurrent Balance {vendingMachine.Balance:C}");
+            Console.WriteLine($"{new string('_', 85)}");
             foreach (Product product in vendingMachine.GetProducts())
             {
-                Console.WriteLine($"{product.Location,-15} {product.ProductName,10} {product.Price,20:C}{product.Stock,4} ");
+                Console.WriteLine($" {product.Location,-20} {product.ProductName,20} {product.Price,20:C}{product.Stock,20} ");
             }
 
-            Console.WriteLine($"{new string('_', 56)}");
-            string select = GetString("Make selection by choosing location :Letter,number", true, null);
+            Console.WriteLine($"{new string('_', 85)}");
+
+            string select = GetString("\tMake selection by choosing location :Letter,number:  ", true, null);
+
             vendingMachine.SelectProduct(select.ToUpper());
+
 
             return MenuOptionResult.WaitAfterMenuSelection;
         }

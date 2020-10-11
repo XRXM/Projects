@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -35,14 +36,23 @@ namespace Capstone.Class
             }
 
         }
+
+
+
         public IEnumerable<Product> GetProducts()
         {
             return inventory.Values.ToArray();
         }
 
-        public void FeedMoney(decimal money)
+        public void FeedMoney(int money)
         {
-            Balance += money;
+            decimal moneyD = Convert.ToDecimal(money);
+            if (moneyD <= 0)
+            {
+                Console.WriteLine("\n\tEnter a postive amount");
+            }
+            else
+                Balance += moneyD;
         }
 
 
@@ -56,15 +66,16 @@ namespace Capstone.Class
             {
                 Product myProd = inventory[kvp];
 
+
                 if (!inventory.ContainsKey(checker))
                 {
 
-                    Console.WriteLine("selection does not exsist: try again.", 10);
+                    Console.WriteLine("\n\tSelection does not exist: try again.", 10);
                     break;
                 }
-                else if (Balance < myProd.Price)
+                else if (kvp == checker && Balance < myProd.Price)
                 {
-                    Console.WriteLine("Insufficient Funds");
+                    Console.WriteLine("\n\tInsufficient Funds");
                     break;
                 }
                 else if (kvp == checker && myProd.Stock > 0)
@@ -72,44 +83,48 @@ namespace Capstone.Class
                     //assign the product to a vailable from the inventory[key]              
                     Balance -= myProd.Price;
                     myProd.Stock -= 1;
-                    MakeSound(myProd.ProductType);
+                    Console.WriteLine($"\n\t\t\t\t\t{MakeSound(myProd.ProductType)}");
                     Log(myProd.ProductName, kvp, myProd.Price);
                     break;
                 }
                 else if (kvp == checker && myProd.Stock == 0)
                 {
-                    Console.WriteLine("Out of stock", 10);
+                    Console.WriteLine("\n\tOut of stock", 10);
                     break;
                 }
-                 
 
-                
+
+
             }
-
-            void MakeSound(string type)
+        }
+        public string MakeSound(string type)
+        {
+            TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+            ti.ToTitleCase(type);
+            if (type == "Chip")
             {
-                if (type == "Chip")
-                {
-                    Console.WriteLine("Crunch Crunch, Yum!");
-                }
-                else if (type == "Candy")
-                {
-                    Console.WriteLine("Munch Munch, Yum!");
-                }
-                else if (type == "Drink")
-                {
-                    Console.WriteLine("Glug Glug, Yum!");
-                }
-                else
-                {
-                    Console.WriteLine("Chew Chew, Yum!");
-                }
+                return "Crunch Crunch, Yum!";
             }
+            else if (type == "Candy")
+            {
+                return "Munch Munch, Yum!";
+            }
+            else if (type == "Drink")
+            {
+                return "Glug Glug, Yum!";
+            }
+            else if (type == "Gum")
+            {
+                return "Chew Chew, Yum!";
+            }
+            else
+                return null;
         }
 
 
+
         public string Makechange(decimal change)
-        {            
+        {
             const int quarter = 25;
             const int dime = 10;
             const int nickle = 5;
@@ -121,7 +136,7 @@ namespace Capstone.Class
             int dimes = (intChange % quarter) / dime;
             int nickles = ((intChange % quarter) % dime) / nickle;
 
-           return $"Your change is {quarters} quarters, {dimes} dimes, and {nickles} nickles.";
+            return $"\n\n Your change is {quarters} quarter(s), {dimes} dime(s), and {nickles} nickle(s).";
 
         }
 
@@ -139,7 +154,7 @@ namespace Capstone.Class
                 {
                     writer.WriteLine($"{DateTime.Now} {a} {b} {num:C} {0:C}");
                 }
-                else 
+                else
                 {
                     writer.WriteLine($"{DateTime.Now} {a} {b} {Balance + num:C} {Balance:C}");
                 }
