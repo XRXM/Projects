@@ -45,7 +45,7 @@ namespace Capstone.Views
             vendingMachine.FeedMoney(money);
             vendingMachine.Log("FEED", "MONEY", (money));
             
-            return MenuOptionResult.WaitAfterMenuSelection;
+            return MenuOptionResult.WaitThenCloseAfterSelection;
         }
         private MenuOptionResult SelectProduct()
         {
@@ -69,7 +69,7 @@ namespace Capstone.Views
             vendingMachine.SelectProduct(select);
 
 
-            return MenuOptionResult.WaitAfterMenuSelection;
+            return MenuOptionResult.WaitThenCloseAfterSelection;
         }
         private MenuOptionResult FinishTransaction()
         {
@@ -78,7 +78,7 @@ namespace Capstone.Views
             
             
 
-            
+            //Console.ReadLine();
             return MenuOptionResult.WaitThenCloseAfterSelection;
         }
 

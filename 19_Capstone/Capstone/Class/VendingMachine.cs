@@ -89,11 +89,11 @@ namespace Capstone.Class
             }
 
 
-            //assign the product to a vailable from the inventory[key]              
+            //assign the product to available from the inventory[key]              
             Balance -= myProd.Price;
             myProd.Stock -= 1;
             Console.WriteLine($"\n\t\t\t\t\t{MakeSound(myProd.ProductType)}");
-            Log(myProd.ProductName, checker, myProd.Price);
+            Log(myProd.ProductName, checker.ToUpper(), myProd.Price);
             return;
 
 
