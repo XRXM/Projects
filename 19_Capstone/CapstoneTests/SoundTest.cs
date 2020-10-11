@@ -7,10 +7,10 @@ using System.Text;
 namespace CapstoneTests
 {
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClass()]
-    class SoundTest
+    public class SoundTest
     {
 
-        public decimal Balance { get; set; }
+        
        
 
         [DataTestMethod]
@@ -21,7 +21,15 @@ namespace CapstoneTests
         [DataRow("gum", "Chew Chew, Yum!")]
         public void MakeSoundTest(string str, string expected)
         {
-            VendingMachine ex = new VendingMachine(Balance);
+            List<Product> products = new List<Product>()
+            {
+                new Product("A1", "Mountain Dew", 1.25m, "Drink", 5),
+                new Product("A2", "Scotch", 5.00m, "Drink", 5),
+                new Product("D1", "Double Mint", 0.25m, "Gum", 5),
+            };
+
+
+            VendingMachine ex = new VendingMachine(products);
 
             string actual = ex.MakeSound(str);
 

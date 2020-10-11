@@ -12,17 +12,18 @@ namespace Capstone.Class
     {
         public decimal Balance { get; set; } = 0;
 
-        public VendingMachine(decimal balance)
-        {
-            Balance = balance;
-        }
+        //public VendingMachine(decimal balance)
+        //{
+        //    Balance = balance;
+        //}
 
         internal static string[] location;
         private SortedDictionary<string, Product> inventory;
 
+
         public VendingMachine(IEnumerable<Product> productlist)
         {
-            this.inventory = new SortedDictionary<string, Product>();
+            this.inventory = new SortedDictionary<string, Product>(StringComparer.InvariantCultureIgnoreCase);
 
             foreach (Product product in productlist)
             {
@@ -62,45 +63,49 @@ namespace Capstone.Class
             //string checker;
             //checker = letter + number.ToString();
 
-            foreach (string kvp in inventory.Keys)
+            //foreach (string kvp in inventory.Keys)
+            //{
+            //Product myProd = inventory[kvp];
+
+
+            if (!inventory.ContainsKey(checker))
             {
-                Product myProd = inventory[kvp];
 
-
-                if (!inventory.ContainsKey(checker))
-                {
-
-                    Console.WriteLine("\n\tSelection does not exist: try again.", 10);
-                    break;
-                }
-                else if (kvp == checker && Balance < myProd.Price)
-                {
-                    Console.WriteLine("\n\tInsufficient Funds");
-                    break;
-                }
-                else if (kvp == checker && myProd.Stock > 0)
-                {
-                    //assign the product to a vailable from the inventory[key]              
-                    Balance -= myProd.Price;
-                    myProd.Stock -= 1;
-                    Console.WriteLine($"\n\t\t\t\t\t{MakeSound(myProd.ProductType)}");
-                    Log(myProd.ProductName, kvp, myProd.Price);
-                    break;
-                }
-                else if (kvp == checker && myProd.Stock == 0)
-                {
-                    Console.WriteLine("\n\tOut of stock", 10);
-                    break;
-                }
-
+                Console.WriteLine("\n\tSelection does not exist: try again.", 10);
+                return;
 
 
             }
+            Product myProd = inventory[checker];
+            if (Balance < myProd.Price)
+            {
+                Console.WriteLine("\n\tInsufficient Funds");
+                return;
+            }
+            if (myProd.Stock == 0)
+            {
+                Console.WriteLine("\n\tOut of stock", 10);
+                return;
+            }
+
+
+            //assign the product to a vailable from the inventory[key]              
+            Balance -= myProd.Price;
+            myProd.Stock -= 1;
+            Console.WriteLine($"\n\t\t\t\t\t{MakeSound(myProd.ProductType)}");
+            Log(myProd.ProductName, checker, myProd.Price);
+            return;
+
+
+
+
+
+            
         }
         public string MakeSound(string type)
         {
             TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
-            ti.ToTitleCase(type);
+            type = ti.ToTitleCase(type);
             if (type == "Chip")
             {
                 return "Crunch Crunch, Yum!";
@@ -123,21 +128,32 @@ namespace Capstone.Class
 
 
 
-        public string Makechange(decimal change)
+        public Change Makechange()
         {
+
             const int quarter = 25;
             const int dime = 10;
             const int nickle = 5;
 
-            change *= 100;
-            int intChange = (int)change;
+            //change *= 100;
+            int intChange = (int)(Balance * 100);
             //Decimal.ToInt32((int)change);
             int quarters = intChange / quarter;
             int dimes = (intChange % quarter) / dime;
             int nickles = ((intChange % quarter) % dime) / nickle;
+            Balance = 0;
+            return new Change(quarters, dimes, nickles);
+            //return $"\n\n Your change is {quarters} quarter(s), {dimes} dime(s), and {nickles} nickle(s).";
 
-            return $"\n\n Your change is {quarters} quarter(s), {dimes} dime(s), and {nickles} nickle(s).";
+        }
+        public Change FinishTransaction()
+        {
+            Change changePurse = Makechange();
+            Log("GIVE", "CHANGE", (Balance));
 
+
+            //Console.ReadLine();
+            return changePurse;
         }
 
         // put the strings by par of menue  make the decimal (balance - balance feedmoney) and  (balance + price for purchase)

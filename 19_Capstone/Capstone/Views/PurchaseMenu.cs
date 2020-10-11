@@ -44,15 +44,14 @@ namespace Capstone.Views
             int money = GetInteger("\n\n Enter a Whole Dollar Amount");
             vendingMachine.FeedMoney(money);
             vendingMachine.Log("FEED", "MONEY", (money));
-            //vending machine
-            return MenuOptionResult.DoNotWaitAfterMenuSelection;
+            
+            return MenuOptionResult.WaitAfterMenuSelection;
         }
         private MenuOptionResult SelectProduct()
         {
             string[] headings = { " Location", "Product Name", "Amount", "Stock" };
 
-            //Console.WriteLine();
-            //Console.WriteLine();
+     
             Console.WriteLine();
             Console.WriteLine($" {headings[0],-20} {headings[1],20} {headings[2],20} {headings[3],20}");
             Console.WriteLine($"{new string('_', 20)} {new string('_', 20)} {new string('_', 20)} {new string('_', 20)} ");
@@ -67,18 +66,19 @@ namespace Capstone.Views
 
             string select = GetString("\tMake selection by choosing location :Letter,number:  ", true, null);
 
-            vendingMachine.SelectProduct(select.ToUpper());
+            vendingMachine.SelectProduct(select);
 
 
             return MenuOptionResult.WaitAfterMenuSelection;
         }
         private MenuOptionResult FinishTransaction()
         {
-            Console.WriteLine(vendingMachine.Makechange(vendingMachine.Balance));
-            vendingMachine.Log("GIVE", "CHANGE", (vendingMachine.Balance));
-            vendingMachine.Balance = 0;
+            Change changePurse = vendingMachine.FinishTransaction();
+            Console.WriteLine($"\n\n Your change is {changePurse.Quarters} quarter(s), {changePurse.Dimes} dime(s), and {changePurse.Nickles} nickle(s).");
+            
+            
 
-            //Console.ReadLine();
+            
             return MenuOptionResult.WaitThenCloseAfterSelection;
         }
 
