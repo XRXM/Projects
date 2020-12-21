@@ -1,0 +1,12 @@
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoClient\bin\Debug\netcoreapp2.2\TenmoClient.deps.json
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoClient\bin\Debug\netcoreapp2.2\TenmoClient.runtimeconfig.json
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoClient\bin\Debug\netcoreapp2.2\TenmoClient.runtimeconfig.dev.json
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoClient\bin\Debug\netcoreapp2.2\TenmoClient.dll
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoClient\bin\Debug\netcoreapp2.2\TenmoClient.pdb
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoClient\obj\Debug\netcoreapp2.2\TenmoClient.csprojAssemblyReference.cache
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoClient\obj\Debug\netcoreapp2.2\TenmoClient.AssemblyInfoInputs.cache
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoClient\obj\Debug\netcoreapp2.2\TenmoClient.AssemblyInfo.cs
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoClient\obj\Debug\netcoreapp2.2\TenmoClient.csproj.CoreCompileInputs.cache
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoClient\obj\Debug\netcoreapp2.2\TenmoClient.dll
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoClient\obj\Debug\netcoreapp2.2\TenmoClient.pdb
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoClient\obj\Debug\netcoreapp2.2\TenmoClient.genruntimeconfig.cache

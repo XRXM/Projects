@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "f5rMkN/cjA2nVG0kBMANDFZ/MOGKI5tE8DA2hEagIzmAXb0NpWsZeQ9+E0+2peZkXGDboDaUQEQA4ke1Lf1aeg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\xrich\\Documents\\GIT\\c-module-2-capstone-team-8\\18_Capstone\\TenmoClient\\TenmoClient.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\xrich\\.nuget\\packages\\consolemenuframework\\1.4.0\\consolemenuframework.1.4.0.nupkg.sha512",
+    "C:\\Users\\xrich\\.nuget\\packages\\microsoft.netcore.app\\2.2.0\\microsoft.netcore.app.2.2.0.nupkg.sha512",
+    "C:\\Users\\xrich\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.2.0\\microsoft.netcore.dotnetapphost.2.2.0.nupkg.sha512",
+    "C:\\Users\\xrich\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.2.0\\microsoft.netcore.dotnethostpolicy.2.2.0.nupkg.sha512",
+    "C:\\Users\\xrich\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.2.0\\microsoft.netcore.dotnethostresolver.2.2.0.nupkg.sha512",
+    "C:\\Users\\xrich\\.nuget\\packages\\microsoft.netcore.platforms\\2.2.0\\microsoft.netcore.platforms.2.2.0.nupkg.sha512",
+    "C:\\Users\\xrich\\.nuget\\packages\\microsoft.netcore.targets\\2.0.0\\microsoft.netcore.targets.2.0.0.nupkg.sha512",
+    "C:\\Users\\xrich\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\xrich\\.nuget\\packages\\restsharp\\106.10.1\\restsharp.106.10.1.nupkg.sha512"
+  ],
+  "logs": []
+}

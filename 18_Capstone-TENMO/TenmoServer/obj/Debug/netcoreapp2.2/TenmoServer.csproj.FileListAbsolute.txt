@@ -1,0 +1,17 @@
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\bin\Debug\netcoreapp2.2\TenmoServer.deps.json
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\bin\Debug\netcoreapp2.2\TenmoServer.runtimeconfig.json
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\bin\Debug\netcoreapp2.2\TenmoServer.runtimeconfig.dev.json
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\bin\Debug\netcoreapp2.2\TenmoServer.dll
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\bin\Debug\netcoreapp2.2\TenmoServer.pdb
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\obj\Debug\netcoreapp2.2\TenmoServer.csprojAssemblyReference.cache
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\obj\Debug\netcoreapp2.2\TenmoServer.AssemblyInfoInputs.cache
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\obj\Debug\netcoreapp2.2\TenmoServer.AssemblyInfo.cs
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\obj\Debug\netcoreapp2.2\TenmoServer.csproj.CoreCompileInputs.cache
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\obj\Debug\netcoreapp2.2\TenmoServer.RazorAssemblyInfo.cache
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\obj\Debug\netcoreapp2.2\TenmoServer.RazorAssemblyInfo.cs
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\obj\Debug\netcoreapp2.2\TenmoServer.RazorTargetAssemblyInfo.cache
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\obj\Debug\netcoreapp2.2\TenmoServer.dll
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\obj\Debug\netcoreapp2.2\TenmoServer.pdb
+C:\Users\xrich\Documents\GIT\c-module-2-capstone-team-8\18_Capstone\TenmoServer\obj\Debug\netcoreapp2.2\TenmoServer.genruntimeconfig.cache
